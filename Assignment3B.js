@@ -1,74 +1,90 @@
+/*
+ * This is a JavaScript Scratchpad.
+ *
+ * Enter some JavaScript, then Right Click or choose from the Execute Menu:
+ * 1. Run to evaluate the selected text (Ctrl+R),
+ * 2. Inspect to bring up an Object Inspector on the result (Ctrl+I), or,
+ * 3. Display to insert the result in a comment after the selection. (Ctrl+L)
+ */
+
 var PA3B = {
-  
+ 
   faceChoices: [4, 6, 8, 10, 12, 20, 100],
-  
+ 
   die: function(f) {
     var faces = f;
     var value = 1;
-    
-    
     return {
-      getFaceValue: function() { /* returns the current face value of the die */ 
-      
-      
-      return this.value;
+      getFaceValue: function() { 
         
-        //working
-        
+        return this.value; 
       
       },
-      getNumFaces: function() { /* returns the number of faces of the die */ 
+      getNumFaces: function() { 
       
-        f = faceChoices[Math.floor(Math.random() * faceChoices.length)];
+        return this.faces;
         
-        
-        //working
-      
       },
-      toString: function() { /*  returns the string representation of the number of faces and the current face value, separated by an equals sign; for example, "d100 = 47" (see below for more examples) */
+      toString: function() { 
       
-        var string = "d" + numFaces + " = " + faceValue;
-        
+      var string = "d" + faces + " = " + value;
+        console.log(string);
         return string;
       
       },
-      isGreater: function(d) { /*  which accepts another die object as a parameter and which returns true if the other die has a lower number of faces, or if the other die has the same number of faces but a lower face value, and false in all other situations. */ },
+      isGreater: function(d) { 
       
+      if (this.faces > d.faces || this.faces == d.faces && this.value > d.value) {
+        return true;
+      }
+      return false;
       
-      
-      
-      roll: function() { /* sets the face value of the die to a uniform random number between 1 and the number of faces, and returns this value to the caller. */
-      
-        this.value = Math.floor(Math.random() * numFaces);
+      },
+      roll: function() { 
+      value = Math.floor(Math.random() * faces) + 1;
+      //console.log(faces);
+        return value;
         
-        return this.value;
-        }
-
-        
+      
+      }
     };
   },
 
   start: function() {
-    // INSERT YOUR CODE HERE
+   /*var numDie = this.faceChoices[Math.floor(Math.random() * this.faceChoices.length)];
+   d = this.die(numDie);
+   d.roll();
+   d.toString();*/
     
+   var playerOnePoints = 0;
+   var playerTwoPoints = 0;
     
-    var d = new die(faceChoices);
-    d.roll();
+   var playerOneString = "Player 1: ";
+   var playerTwoString = "Player 2: ";
+   var i;
+   for (i = 0; i < 5; i++) {
+     pOneDie = this.die(this.faceChoices[Math.floor(Math.random() * this.faceChoices.length)]);
+     pTwoDie = this.die(this.faceChoices[Math.floor(Math.random() * this.faceChoices.length)]); 
+     pOneDie.roll();
+     pTwoDie.roll();
+     playerOneString += pOneDie.toString() + ", ";
+     playerTwoString += pTwoDie.toString() + ", ";
+     
+     if (pOneDie.isGreater(pTwoDie)) {
+       playerOnePoints++;
+     }
+     else if (pTwoDie.isGreater(pOneDie)) {
+       playerTwoPoints++;
+     }
+   }
+    console.log(playerOneString);
+    console.log(playerTwoString);
+    console.log(playerOnePoints);
+    console.log(playerTwoPoints);
     
     
   }
-  
+ 
 };
 
 PA3B.start();
-
-/*
-Exception: ReferenceError: die is not defined
-start@Scratchpad/11:55:5
-@Scratchpad/11:63:1
-*/
-/*
-Exception: ReferenceError: die is not defined
-start@Scratchpad/11:55:9
-@Scratchpad/11:63:1
-*/
