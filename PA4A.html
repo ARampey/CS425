@@ -1,0 +1,56 @@
+<html>
+   <head>
+
+      <title>Participation Assignment #4A</title>
+      <meta charset="utf-8">
+      <script type="text/javascript" src="PA4A.js"></script> 
+
+   </head>
+
+<style>
+table, td {
+  border: 1px solid black;
+}
+</style>
+
+   <body>
+      <form name="testform" id="testform" action="#">
+         <input type="button" value="Click here to show addresses" onclick="PA4A.onClick();">
+
+<table id="myTable">
+  <tr>
+    <td>cell 1</td>
+    <td>cell 2</td>
+  </tr>
+  <tr>
+    <td>cell 3</td>
+    <td>cell 4</td>
+  </tr>
+</table>
+
+
+<button onclick="myFunction()">Try it</button>
+      </form>      
+
+
+	<script>
+	myFunction() {
+
+
+
+
+	var table = document.getElementById("myTable");
+  var header = table.createTHead();
+  var row = header.insertRow(0);
+  var cell = row.insertCell(0);
+  cell.innerHTML = "<b>This is a table header</b>";
+}
+	</script>	
+
+
+      <div id="output"></div>
+
+	
+	
+   </body>
+</html>
